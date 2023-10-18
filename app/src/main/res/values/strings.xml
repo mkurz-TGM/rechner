@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Rechner</string>
+    <string name="Division">/</string>
+    <string name="Addition">+</string>
+    <string name="Substraction">-</string>
+    <string name="Multiplication">*</string>
+    <string name="mr">MR</string>
+    <string name="wert_1">Wert 1</string>
+    <string name="wert_2">Wert 2</string>
+    <string name="berechnen">Berechnen</string>
+    <string name="ms">MS</string>
+    <string name="_0">0</string>
+</resources>
