@@ -53,42 +53,14 @@
         app:layout_constraintTop_toBottomOf="@+id/input2"
         app:layout_constraintVertical_bias="0.04" />
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="197dp"
-        android:layout_height="52dp"
-        android:orientation="horizontal"
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="328dp"
+        android:layout_height="57dp"
         app:layout_constraintBottom_toTopOf="@+id/input2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input1">
-
-        <RadioButton
-            android:id="@+id/radio4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/Division"
-            tools:layout_editor_absoluteX="262dp" />
-
-        <RadioButton
-            android:id="@+id/radio1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/Addition" />
-
-        <RadioButton
-            android:id="@+id/radio2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/Substraction" />
-
-        <RadioButton
-            android:id="@+id/radio3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/Multiplication" />
-    </RadioGroup>
+        app:layout_constraintTop_toBottomOf="@+id/input1" />
 
     <Button
         android:id="@+id/buttonMR"

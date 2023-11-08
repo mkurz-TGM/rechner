@@ -5,23 +5,28 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     Button button1;
     Button buttonMS;
     Button buttonMR;
     EditText input1;
     EditText input2;
-    RadioGroup group;
+    String operator = "";
+    String[] operations = {"+", "-", "*", "/"};
     public static final String MY_PREFS = "MyPrefsFile";
 
     @Override
@@ -35,7 +40,13 @@ public class MainActivity extends AppCompatActivity {
 
         input1 = findViewById(R.id.input1);
         input2 = findViewById(R.id.input2);
-        group = findViewById(R.id.radioGroup);
+
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.operators, android.R.layout.simple_spinner_item);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.menu_main);
         setSupportActionBar(toolbar);
@@ -59,10 +70,10 @@ public class MainActivity extends AppCompatActivity {
             int val2 = Integer.parseInt(input2.getText().toString());
             int output = 0;
 
-            if (input1.getText().toString().equals("") || input2.getText().toString().equals("") || group.getCheckedRadioButtonId() == -1) {
+            if (input1.getText().toString().equals("") || input2.getText().toString().equals("")) {
                 Toast.makeText(getApplicationContext(), "An Error occurred.", Toast.LENGTH_SHORT).show();
             } else {
-                switch (((RadioButton) findViewById(group.getCheckedRadioButtonId())).getText().toString()) {
+                switch (operator) {
                     case "+":
                         output = val1 + val2;
                         break;
@@ -111,5 +122,15 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
+        operator = operations[position];
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

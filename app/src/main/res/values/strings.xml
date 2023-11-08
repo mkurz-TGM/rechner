@@ -12,4 +12,11 @@
     <string name="_0">0</string>
     <string name="reset">Reset</string>
     <string name="info">Info</string>
+
+    <string-array name="operators">
+        <item>+</item>
+        <item>-</item>
+        <item>*</item>
+        <item>/</item>
+    </string-array>
 </resources>
