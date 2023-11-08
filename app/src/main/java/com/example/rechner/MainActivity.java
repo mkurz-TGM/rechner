@@ -55,9 +55,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         button1.setOnClickListener(view -> {
-            int val1 = Integer.parseInt(input1.getText().toString());
-            int val2 = Integer.parseInt(input2.getText().toString());
-            int output = 0;
+            double val1 = Double.parseDouble(input1.getText().toString());
+            double val2 = Double.parseDouble(input2.getText().toString());
+            double output = 0;
 
             if (input1.getText().toString().equals("") || input2.getText().toString().equals("") || group.getCheckedRadioButtonId() == -1) {
                 Toast.makeText(getApplicationContext(), "An Error occurred.", Toast.LENGTH_SHORT).show();
