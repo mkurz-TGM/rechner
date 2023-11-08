@@ -10,4 +10,6 @@
     <string name="berechnen">Berechnen</string>
     <string name="ms">MS</string>
     <string name="_0">0</string>
+    <string name="reset">Reset</string>
+    <string name="info">Info</string>
 </resources>

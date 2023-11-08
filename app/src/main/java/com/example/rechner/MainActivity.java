@@ -3,13 +3,15 @@ package com.example.rechner;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.appcompat.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     EditText input2;
     RadioGroup group;
     public static final String MY_PREFS = "MyPrefsFile";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,14 +37,17 @@ public class MainActivity extends AppCompatActivity {
         input2 = findViewById(R.id.input2);
         group = findViewById(R.id.radioGroup);
 
-        buttonMS.setOnClickListener(view ->{
+        Toolbar toolbar = (Toolbar) findViewById(R.id.menu_main);
+        setSupportActionBar(toolbar);
+
+        buttonMS.setOnClickListener(view -> {
             SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS, MODE_PRIVATE).edit();
             editor.putString("val1", input1.getText().toString());
             editor.putString("val2", input2.getText().toString());
             editor.apply();
         });
 
-        buttonMR.setOnClickListener(view ->{
+        buttonMR.setOnClickListener(view -> {
             SharedPreferences prefs = getSharedPreferences(MY_PREFS, MODE_PRIVATE);
             input1.setText(prefs.getString("val1", "-1"));
             input2.setText(prefs.getString("val2", "-1"));
@@ -81,9 +87,29 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        int color = Color.rgb(10,200,10);
+        int color = Color.rgb(10, 200, 10);
         button1.setBackgroundColor(color);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.reset) {
+            input1.setText("");
+            input2.setText("");
+            ((TextView) findViewById(R.id.output)).setText("0");
+            return true;
+        } else if (id == R.id.info) {
+            Toast.makeText(getApplicationContext(), "Matthias Kurz; V1.0", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        return false;
+    }
 }
